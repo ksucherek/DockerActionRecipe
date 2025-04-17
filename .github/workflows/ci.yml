@@ -1,11 +1,19 @@
-name: Akcja CI
-on: [push]
+name: Docker Hello World
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
 jobs:
-    ci:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4.1.1
-            - name: who-to-greet
-              uses: ./
-              with:
-                  who-to-greet: "@wulfland"
+  build-and-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t hello-world .
+
+      - name: Run container
+        run: docker run --rm hello-world
