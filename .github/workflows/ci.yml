@@ -5,7 +5,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4.1.1
-            - name: "Uruchom moją własną akcję kontenera"
+            - name: who-to-greet
               uses: ./
               with:
                   who-to-greet: "@wulfland"
